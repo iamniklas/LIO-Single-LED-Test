@@ -1,5 +1,8 @@
+import com.github.iamniklas.liocore.led.LEDStripManager;
 import com.github.iamniklas.liocore.network.*;
 import com.github.iamniklas.liocore.network.mqtt.*;
+import com.github.iamniklas.liocore.procedures.Procedure;
+import com.github.iamniklas.liocore.procedures.ProcedureFactory;
 import com.pi4j.io.gpio.*;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
@@ -7,6 +10,8 @@ public class Main {
     private static GpioController gpio;
     private static GpioPinDigitalOutput pinProgramState;
     private static GpioPinDigitalOutput pin;
+
+    private static LEDStripManager ledMng;
 
     public static void main(String[] args) throws MqttException, InterruptedException {
         gpio = GpioFactory.getInstance();
@@ -30,12 +35,20 @@ public class Main {
         new MQTTListener(new IMqttCallback() {
             @Override
             public void onLEDUpdateModelReceive(LEDUpdateModel _updateModel) {
-                notifyMsgIncome(pin);
+                _updateModel.bundle.ledStrip = ledMng;
+                _updateModel.bundle.procedureCalls = ledMng;
+                Procedure p = ProcedureFactory.getProcedure(_updateModel.procedure, _updateModel.bundle);
+                ledMng.procContainer.removeCurrentProcedure();
+                ledMng.procContainer.queueProcedure(p);
             }
 
             @Override
             public void onLEDUpdateModelReceiveAll(LEDUpdateModel _updateModel) {
-                notifyMsgIncome(pin);
+                _updateModel.bundle.ledStrip = ledMng;
+                _updateModel.bundle.procedureCalls = ledMng;
+                Procedure p = ProcedureFactory.getProcedure(_updateModel.procedure, _updateModel.bundle);
+                ledMng.procContainer.removeCurrentProcedure();
+                ledMng.procContainer.queueProcedure(p);
             }
 
             @Override
@@ -49,7 +62,12 @@ public class Main {
             }
         }).connect();
 
-        //System.out.println("Exiting ControlGpioExample");
+        SingleLEDRenderer renderer = new SingleLEDRenderer(pin);
+        ledMng = new LEDStripManager(renderer, false);
+
+        while (true) {
+            ledMng.update();
+        }
     }
 
     static void notifyMsgIncome(GpioPinDigitalOutput pin) {
