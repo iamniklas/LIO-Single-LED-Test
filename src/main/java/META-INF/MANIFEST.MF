@@ -8,7 +8,7 @@ Class-Path: pi4j-gpio-extension-sources.jar pi4j-gpio-extension-javadoc.
  ar junit-jupiter-api-5.8.2.jar slf4j-api-1.7.30.jar hamcrest-core-1.3.j
  ar pi4j-gpio-extension.jar checker-qual-3.12.0.jar error_prone_annotati
  ons-2.7.1.jar guava-31.0.1-jre.jar pi4j-example.jar pi4j-device-sources
- .jar LIO-Core-0.0.7-1.1.jar junit.jar junit-jupiter-5.8.2.jar junit-jupit
+ .jar LIO-Core-0.0.7-1.5.jar junit.jar junit-jupiter-5.8.2.jar junit-jupit
  er-engine-5.8.2.jar junit-platform-commons-1.8.2.jar gson-2.8.9.jar pi4
  j-core-sources.jar jsr305-3.0.2.jar pi4j-example-javadoc.jar pi4j-core.
  jar pi4j-device.jar junit-4.13.2.jar Interpolation-1.0.0-1.jar j2objc-a
