@@ -15,14 +15,13 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 
-    implementation 'com.pi4j:pi4j-parent:2.1.1'
     implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5'
 
-    implementation 'com.github.iamniklas:Interpolation:1.0.0-1'
-    implementation 'com.github.iamniklas:LIO-Core:0.0.7-1.5'
+    implementation 'com.github.iamniklas:Interpolation:1.0.0-2'
+    implementation 'com.github.iamniklas:LIO-Core:0.0.7-1.9'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.0'
 }
 
 test {

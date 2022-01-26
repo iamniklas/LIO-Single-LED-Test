@@ -13,7 +13,6 @@ import com.github.iamniklas.liocore.network.mqtt.MQTTListener
 import com.github.iamniklas.liocore.network.mqtt.IMqttCallback
 import com.github.iamniklas.liocore.network.LEDUpdateModel
 import com.github.iamniklas.liocore.procedures.ProcedureFactory
-import com.github.iamniklas.liocore.network.LEDValueUpdateModel
 
 class Main {
     @Throws(Throwable::class)
@@ -66,13 +65,13 @@ class Main {
                     ledMng.procContainer.queueProcedure(p)
                 }
 
-                override fun onLEDValueUpdateModelReceive(_valueUpdateModel: LEDValueUpdateModel) {}
-                override fun onLEDValueUpdateModelReceiveAll(_valueUpdateModel: LEDValueUpdateModel) {}
+                override fun onLEDValueUpdateModelReceive(_valueUpdateModel: LEDUpdateModel) {}
+                override fun onLEDValueUpdateModelReceiveAll(_valueUpdateModel: LEDUpdateModel) {}
             }).connect()
 
             val renderer = SingleLEDRenderer(pin)
 
-            ledMng = LEDStripManager(renderer, false)
+            ledMng = LEDStripManager(renderer, ProgramConfiguration.configuration.ledCount)
             while (true) {
                 ledMng.update()
             }
