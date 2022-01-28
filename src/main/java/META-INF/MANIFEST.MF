@@ -13,5 +13,5 @@ Class-Path: error_prone_annotations-2.7.1.jar gson-2.8.9.jar pi4j-gpio-e
  junit-jupiter-api-5.8.2.jar listenablefuture-9999.0-empty-to-avoid-conf
  lict-with-guava.jar pi4j-core-javadoc.jar kotlin-stdlib-1.6.0.jar opent
  est4j-1.2.0.jar jsr305-3.0.2.jar pi4j-example-javadoc.jar LIO-Core-0.0.
- 7-1.9.jar kotlin-stdlib-jdk7-1.6.0.jar failureaccess-1.0.1.jar
+ 7-1.10.jar kotlin-stdlib-jdk7-1.6.0.jar failureaccess-1.0.1.jar
 

@@ -1,2 +1,0 @@
-D:\Projekte\IDEA\LIO-Single-LED-Test\src\main\java\SingleLEDRenderer.kt
-D:\Projekte\IDEA\LIO-Single-LED-Test\src\main\java\Main.kt
